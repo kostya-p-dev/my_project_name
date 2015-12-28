@@ -18,4 +18,23 @@ class DefaultController extends Controller
             'base_dir' => realpath($this->container->getParameter('kernel.root_dir').'/..'),
         ));
     }
+
+    /**
+     * @Route("/email", name="email")
+     */
+    public function emailAction(Request $request)
+    {
+        // получаем 'mailer' (обязателен для инициализации Swift Mailer)
+        $mailer = $this->get('mailer');
+
+        $message = \Swift_Message::newInstance()
+            ->setSubject('Hello Email')
+            ->setFrom('ermine.test1@gmail.com')
+            ->setTo('ermine.kostya@gmail.com')
+            ->setBody($this->renderView('Emails/registration.html.twig', array('name' => 'TEST')))
+        ;
+        $resp = $mailer->send($message);
+
+        var_dump($resp);
+    }
 }
