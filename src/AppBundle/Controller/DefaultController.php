@@ -33,6 +33,7 @@ class DefaultController extends Controller
             ->setFrom('ermine.test1@gmail.com')
             ->setTo('kostya.p.dev@gmail.com')
             ->setBody($this->renderView('Emails/registration.html.twig', array('name' => 'TEST')))
+            ->setContentType('text/html')
         ;
         $resp = $mailer->send($message);
 
