@@ -29,9 +29,9 @@ class DefaultController extends Controller
         $mailer = $this->get('mailer');
 
         $message = \Swift_Message::newInstance()
-            ->setSubject('Hello Email')
+            ->setSubject('SYsky #'. rand(1000000000, 1000000000000))
             ->setFrom('ermine.test1@gmail.com')
-            ->setTo('ermine.kostya@gmail.com')
+            ->setTo('kostya.p.dev@gmail.com')
             ->setBody($this->renderView('Emails/registration.html.twig', array('name' => 'TEST')))
         ;
         $resp = $mailer->send($message);
