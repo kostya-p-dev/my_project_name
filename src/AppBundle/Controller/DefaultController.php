@@ -26,19 +26,19 @@ class DefaultController extends Controller
     public function emailAction(Request $request)
     {
         // получаем 'mailer' (обязателен для инициализации Swift Mailer)
-        $mailer = $this->get('mailer');
-
-        $message = \Swift_Message::newInstance()
-            ->setSubject('SYsky2 #'. rand(1000000000, 1000000000000))
-            ->setFrom('ermine.test1@gmail.com')
-            ->setTo('kostya.p.dev@gmail.com')
-            ->setBody($this->renderView('Emails/registration.html.twig', array('name' => 'TEST')))
-            ->setContentType('text/html')
-        ;
-        $resp = $mailer->send($message);
-
-        var_dump($resp);
-        return new Response('Hello world!');
+//        $mailer = $this->get('mailer');
+//
+//        $message = \Swift_Message::newInstance()
+//            ->setSubject('SYsky2 #'. rand(1000000000, 1000000000000))
+//            ->setFrom('ermine.test1@gmail.com')
+//            ->setTo('kostya.p.dev@gmail.com')
+//            ->setBody($this->renderView('Emails/registration.html.twig', array('name' => 'TEST')))
+//            ->setContentType('text/html')
+//        ;
+//        $resp = $mailer->send($message);
+//
+//        var_dump($resp);
+//        return new Response('Hello world!');
 
 
 
@@ -51,6 +51,18 @@ class DefaultController extends Controller
 //
 //        var_dump($res);
 //        return new Response('Hello world!');
+
+        $to      = 'kostya.p.dev@gmail.com';
+        $subject = 'new order #'.rand(1000, 100000000000000);;
+        $message = 'info:'.rand(1000, 100000000000000);
+        $headers = 'From: kostya.p.dev@gmail.com' . "\r\n" .
+            'Reply-To: kostya.p.dev@gmail.com' . "\r\n" .
+            'X-Mailer: PHP/' . phpversion() .
+            'Content-type: text/html;charset=utf-8' . "\r\n";
+
+        $res = mail($to, $subject, $message, $headers);
+        var_dump($res);
+        return new Response('Hello world!');
     }
 
     public function send_mail($to,$from,$subject,$msg){
