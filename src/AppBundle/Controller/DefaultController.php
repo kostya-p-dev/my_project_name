@@ -53,12 +53,13 @@ class DefaultController extends Controller
 //        return new Response('Hello world!');
 
         $to      = 'kostya.p.dev@gmail.com';
-        $subject = 'new order #'.rand(1000, 100000000000000);;
-        $message = 'info:'.rand(1000, 100000000000000);
-        $headers = 'From: kostya.p.dev@gmail.com' . "\r\n" .
-            'Reply-To: kostya.p.dev@gmail.com' . "\r\n" .
-            'X-Mailer: PHP/' . phpversion() .
-            'Content-type: text/html;charset=utf-8' . "\r\n";
+        $subject = 'the subject';
+        $message = 'hello';
+        $headers = 'From: webmaster@example.com' . "\r\n" .
+            'Reply-To: webmaster@example.com' . "\r\n" .
+            'X-Mailer: PHP/' . phpversion();
+
+
 
         $res = mail($to, $subject, $message, $headers);
         var_dump($res);
