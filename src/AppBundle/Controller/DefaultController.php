@@ -26,31 +26,31 @@ class DefaultController extends Controller
     public function emailAction(Request $request)
     {
         // получаем 'mailer' (обязателен для инициализации Swift Mailer)
-//        $mailer = $this->get('mailer');
-//
-//        $message = \Swift_Message::newInstance()
-//            ->setSubject('SYsky #'. rand(1000000000, 1000000000000))
-//            ->setFrom('ermine.test1@gmail.com')
-//            ->setTo('kostya.p.dev@gmail.com')
-//            ->setBody($this->renderView('Emails/registration.html.twig', array('name' => 'TEST')))
-//            ->setContentType('text/html')
-//        ;
-//        $resp = $mailer->send($message);
-//
-//        var_dump($resp);
-//        return new Response('Hello world!');
+        $mailer = $this->get('mailer');
 
+        $message = \Swift_Message::newInstance()
+            ->setSubject('SYsky2 #'. rand(1000000000, 1000000000000))
+            ->setFrom('ermine.test1@gmail.com')
+            ->setTo('kostya.p.dev@gmail.com')
+            ->setBody($this->renderView('Emails/registration.html.twig', array('name' => 'TEST')))
+            ->setContentType('text/html')
+        ;
+        $resp = $mailer->send($message);
 
-
-        $to      = 'kostya.p.dev@gmail.com';
-        $from    = 'kostya.p.dev@gmail.com';
-        $subject = 'New Order! #' .rand(1000, 100000);
-        $message = $this->renderView('Emails/registration.html.twig', array('name' => 'TEST'));
-
-        $res = $this->send_mail($to,$from,$subject,$message);
-
-        var_dump($res);
+        var_dump($resp);
         return new Response('Hello world!');
+
+
+
+//        $to      = 'kostya.p.dev@gmail.com';
+//        $from    = 'kostya.p.dev@gmail.com';
+//        $subject = 'New Order! #' .rand(1000, 100000);
+//        $message = $this->renderView('Emails/registration.html.twig', array('name' => 'TEST'));
+//
+//        $res = $this->send_mail($to,$from,$subject,$message);
+//
+//        var_dump($res);
+//        return new Response('Hello world!');
     }
 
     public function send_mail($to,$from,$subject,$msg){

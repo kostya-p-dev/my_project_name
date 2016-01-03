@@ -80,9 +80,9 @@ doctrine:
 #    spool:     { type: memory }
 
 swiftmailer:
-    transport:  smtp
-    encryption: ssl
-    auth_mode:  login
-    host:       smtp.gmail.com
-    username:   ermine.test1@gmail.com
-    password:   T/*-+/*-+
+#    transport:  smtp
+#    encryption: ssl
+#    auth_mode:  login
+#    host:       smtp.gmail.com
+#    username:   ermine.test1@gmail.com
+#    password:   T/*-+/*-+
